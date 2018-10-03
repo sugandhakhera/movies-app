@@ -1,3 +1,4 @@
+/*Styling for login button/black bar*/
 .app-header {
     background-color: #222;
     height: 36px;
@@ -6,3 +7,14 @@
 .login-button {
     float: right;
 }
+
+/*Stlying for logo */
+.app-logo {
+    animation: app-logo-spin infinite 8s linear;
+    height: 35px;
+    background: #ff7f7f;
+}
+/*To move logo*/
+@keyframes app-logo-spin {
+    from { transform: scaleX(-1); }
+} 
