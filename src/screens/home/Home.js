@@ -4,7 +4,7 @@ import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
 
 import moviesData from '../../common/movieData';
-import genre from '../../common/genre';
+import genres from '../../common/genres';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -18,6 +18,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     root: {
@@ -115,6 +116,16 @@ class Home extends Component {
                                     <Input id="movieName" onChange={this.movieNameChangeHandler}> </Input>
                                 </FormControl>
 
+                                  <FormControl className={classes.formControl}>
+                                    <TextField
+                                        id="releaseDateStart"
+                                        label="Release Date Start"
+                                        type="date"
+                                        defaultValue=""
+                                        InputLabelProps={{ shrink: true }}
+                                    />
+                                </FormControl>
+
                                 <FormControl className={classes.formControl}>
                                   
                                     <InputLabel htmlFor="select-multiple-checkbox">Genres</InputLabel>
@@ -135,6 +146,8 @@ class Home extends Component {
 
                                     </Select>
                                 </FormControl>
+
+                               
 
                             </CardContent>
                         </Card>
