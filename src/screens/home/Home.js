@@ -157,7 +157,12 @@ class Home extends Component {
                                     </Select>
                                 </FormControl>
 
-                               
+                                <br /><br />
+                                <FormControl className={classes.formControl}>
+                                    <Button variant="contained" color="primary">
+                                        APPLY
+                                    </Button>
+                                </FormControl>
 
                             </CardContent>
                         </Card>
