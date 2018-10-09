@@ -126,6 +126,16 @@ class Home extends Component {
                                     />
                                 </FormControl>
 
+                                 <FormControl className={classes.formControl}>
+                                    <TextField
+                                        id="releaseDateEnd"
+                                        label="Release Date End"
+                                        type="date"
+                                        defaultValue=""
+                                        InputLabelProps={{ shrink: true }}
+                                    />
+                                </FormControl>
+
                                 <FormControl className={classes.formControl}>
                                   
                                     <InputLabel htmlFor="select-multiple-checkbox">Genres</InputLabel>
