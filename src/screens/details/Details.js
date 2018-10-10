@@ -6,6 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import './Details.css';
 import Home from '../home/Home';
 import YouTube from 'react-youtube';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 
 class Details extends Component {
@@ -15,6 +18,10 @@ class Details extends Component {
             movie: {}
         }
     }
+    artistClickHandler = (url) => {
+        window.location = url;
+    }
+    
     componentWillMount() {
         let currentState = this.state;
         currentState.movie = moviesData.filter((mov) => {
@@ -92,6 +99,26 @@ class Details extends Component {
                         
                     </div>
                     <div className="rightDetails">
+                    <div className="bold marginBottom16 marginTop16">
+                            <Typography>
+                                <span className="bold">Artists:</span>
+                            </Typography>
+                        </div>
+                        <div className="paddingRight">
+                            <GridList cellHeight={160} cols={2}>
+                                {movie.artists != null && movie.artists.map(artist => (
+                                    <GridListTile
+                                        className="gridTile"
+                                        onClick={() => this.artistClickHandler(artist.wiki_url)}
+                                        key={artist.id}>
+                                        <img src={artist.profile_url} alt={artist.first_name + " " + artist.last_name} />
+                                        <GridListTileBar
+                                            title={artist.first_name + " " + artist.last_name}
+                                        />
+                                    </GridListTile>
+                                ))}
+                            </GridList>
+                        </div>
                     </div>
                 </div>
             </div>
