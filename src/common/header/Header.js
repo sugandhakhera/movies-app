@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom'; 
 import './Header.css';
+import BookShow from '../../screens/bookshow/BookShow';
 import Button from '@material-ui/core/Button';
 import logo from '../../assets/logo.svg';
 import Modal from 'react-modal';
@@ -11,6 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import PropTypes from 'prop-types';
 import FormHelperText from  '@material-ui/core/FormHelperText';
+
 
 const customStyles = {
     content: {
@@ -89,6 +92,9 @@ class Header extends Component {
         this.setState({ password: e.target.value })
     }
 
+    bookShowHandler = () => {
+        ReactDOM.render(<BookShow />, document.getElementById('root'));
+    }
 
     registerClickHandler = () => {
         this.state.firstname === "" ? this.setState({ firstnameRequired: "dispBlock" }) : this.setState({ firstnameRequired: "dispNone" })
@@ -119,6 +125,14 @@ class Header extends Component {
                         <Button variant="contained" color="default" onClick={this.openModalHandler}>
                             Login
                         </Button>
+                        {this.props.showBookShowButton === "true" ?
+                        <div className="bookshow-button">
+                            <Button variant="contained" color="primary" onClick={this.bookShowHandler}>
+                                Book Show
+                            </Button>
+                        </div>
+                        : ""}
+
                     </div>
                 </header>
                 <Modal  style={customStyles} isOpen={this.state.modalIsOpen} contentLabel="Login" ariaHideApp={false} onRequestClose={this.closeModalHandler}>
@@ -191,9 +205,6 @@ class Header extends Component {
                     </Button>
                 </TabContainer>
                 }
-
-
-
 
                 </Modal>
 
