@@ -14,9 +14,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-//import Input from '@material-ui/core/Input';
+import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
 class BookShow extends Component {
     constructor() {
@@ -25,7 +26,10 @@ class BookShow extends Component {
             location: "",
             language: "",
             showDate: "",
-            showTime: ""
+            showTime: "",
+            tickets: 0,
+            unitPrice : 500,
+            availableTickets: 20
         }
     }
 
@@ -48,6 +52,10 @@ class BookShow extends Component {
 
     showTimeChangeHandler = event => {
         this.setState({ showTime: event.target.value });
+    }
+
+    ticketsChangeHandler = event => {
+        this.setState({ tickets: event.target.value });
     }
 
     render() {
@@ -117,8 +125,24 @@ class BookShow extends Component {
                                 </Select>
                             </FormControl>
 
+                            <FormControl required className="formControl">
+                                  <InputLabel htmlFor="tickets">Tickets: ({this.state.availableTickets} avaliable)</InputLabel> 
+                                  <Input id="tickets" onChange={this.ticketsChangeHandler} value={this.state.tickets !== 0 ? this.state.tickets : "" }></Input>       
+                            </FormControl>
 
+                            <br /><br />
+                            <Typography>
+                                Unit Price: Rs. {this.state.unitPrice}
+                            </Typography>
+                            <br />
+                            <Typography>
+                                Total Price: Rs. {this.state.unitPrice * this.state.tickets}
+                            </Typography>
 
+                             <br /><br />
+                            <Button variant="contained" onClick={this.bookShowButtonHandler} color="primary">
+                                BOOK SHOW
+                            </Button>
 
                         </CardContent>
                    </Card>
